@@ -54,7 +54,7 @@ const currentDate = new Date();
 //         so you must add 1 to get the correct month number.
 const month = currentDate.getMonth() + 1;
 // STEP 8: Get the day of the month using .getDate()
-const day = currentDate.getdate();
+const day = currentDate.getDate();
 // STEP 9: Get the year using .getFullYear()
 const year = currentDate.getFullYear();
 // STEP 10: Build the date string: month + "/" + day + "/" + year
@@ -79,7 +79,7 @@ let startTime = new Date().getTime();
 //          b) Calculate elapsed seconds: (currentTime - startTime) / 1000
 //          c) Display the elapsed time using .toFixed(3)
 //             in the element with ID "myTimer"
-let timerID = setInterval(function() {
+let timerId = setInterval(function() {
     let currentTime = new Date().getTime();
     let elapsedSeconds = (currentTime - startTime) / 1000;
 document.getElementById("myTimer").textContent = elapsedSeconds.toFixed(3);
