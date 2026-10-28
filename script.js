@@ -16,7 +16,7 @@
 // element with ID "warmUpDate".
 function displayCurrentDay() {
 // STEP 1: Create a new Date object using: let now = new Date();
-let now = new Date()
+let now = new Date();
 // STEP 2: Use .getDay() to get the day of the week as a number.
 //         Sunday = 0, Monday = 1, Tuesday = 2, ... Saturday = 6
 let dayNum = now.getDay();
@@ -39,7 +39,7 @@ let dayName = days[dayNum];
 //         using document.getElementById("warmUpDate").innerHTML
 document.getElementById("warmUpDate").innerHTML = dayName;
 }
-
+displayCurrentDay();
 // ============================================
 //  PART 1: Current Date Display
 // ============================================
@@ -54,7 +54,7 @@ const currentDate = new Date();
 //         so you must add 1 to get the correct month number.
 const month = currentDate.getMonth() + 1;
 // STEP 8: Get the day of the month using .getDate()
-const Day = currentDate.getdate();
+const day = currentDate.getdate();
 // STEP 9: Get the year using .getFullYear()
 const year = currentDate.getFullYear();
 // STEP 10: Build the date string: month + "/" + day + "/" + year
@@ -71,7 +71,7 @@ document.getElementById("myDate").textContent = dateString;
 
 // STEP 11: Record the start time using new Date().getTime()
 //          This gives you the current time in milliseconds.
-let start = new Date().getTime();
+let startTime = new Date().getTime();
 // STEP 12: Create a variable to hold the timer ID (for stopping later).
 //          Use setInterval() with a delay of 10 milliseconds.
 //          Inside the interval function:
@@ -79,11 +79,10 @@ let start = new Date().getTime();
 //          b) Calculate elapsed seconds: (currentTime - startTime) / 1000
 //          c) Display the elapsed time using .toFixed(3)
 //             in the element with ID "myTimer"
-let timerId = [];
-timerID = setInterval(function() {
+let timerID = setInterval(function() {
     let currentTime = new Date().getTime();
     let elapsedSeconds = (currentTime - startTime) / 1000;
-document.getElementById("myTimer").textContent = elapsedSeconds.toFixed(3)
+document.getElementById("myTimer").textContent = elapsedSeconds.toFixed(3);
 }, 10);
 
 
@@ -114,16 +113,17 @@ let running = true;
 //             - Set running to true
 document.getElementById("myBtn").addEventListener("click", function() {
 if (running) {
-    clearInterval(timeInterval);
+    clearInterval(timerId);
     this.innerHTML = "Start";
     running = false; 
 } else {
-    startTime = Date.now();
-    timerInterval = setInterval(function(){
-        let elapsedTime = Date.now() - startTime;
-        displayTimer(elapsedTime);
-    }, 1000);
+    startTime = new Date().getTime();
+    timerId = setInterval(function() {
+    let currentTime = new Date().getTime();
+    let elapsedSeconds = (currentTime - startTime) / 1000;
+    document.getElementById("myTimer").textContent = elapsedSeconds.toFixed(3);
+    }, 10);
     this.innerHTML = "Stop";
     running = true;
-}
+  }
 });
